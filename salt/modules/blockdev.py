@@ -137,19 +137,3 @@ def flush_buffers(*devices):
     See the --flushbufs command in the ``blockdev(8)`` manpage.
     '''
     return _cmd_run_all('flushbufs', devices)
-
-
-def flush_buffers(*devices):
-    '''
-    Flush buffers of selected devices
-
-    CLI Example:
-
-    .. code-block:: bash
-
-        salt '*' blockdev.flush_buffers /dev/xvdb
-        salt '*' blockdev.flush_buffers /dev/xvdf1 /dev/xvdf2
-
-    See the --flushbufs command in the ``blockdev(8)`` manpage.
-    '''
-    return _cmd_run_all('rereadpt', devices)
