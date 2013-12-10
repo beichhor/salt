@@ -1,7 +1,10 @@
 # -*- coding: utf-8 -*-
 
 """
-blockdev - call block device ioctls from the command line
+Manage Block Devices using blockdev
+===================================
+
+The utility blockdev allows one to call block device input/output controls from the command line.
 """
 
 import os
@@ -57,7 +60,7 @@ def get(command, *devices):
         opt_io_size: Get optimal I/O size.
         max_sectors: Get max sectors per request
         physical_block_size: Get physical block (sector) size.
-        read_ahread: Print readahead (in 512-byte sectors).
+        read_ahead: Print readahead (in 512-byte sectors).
         read_only: Get read-only. Print 1 if the device is read-only, 0 otherwise.
         size_bytes: Print device size in bytes.
         size:  Print sectorsize in bytes - usually 512.
@@ -103,7 +106,7 @@ def set(command, value, *devices):
 
         block_size: Set blocksize.
         filesystem_read_ahead: Set filesystem readahead (same like --setra on 2.6 kernels).
-        read_ahread: Set readahead (in 512-byte sectors).
+        read_ahead: Set readahead (in 512-byte sectors).
         read_only: Set read-only.
         read_write: Set read-write.
 
@@ -118,7 +121,7 @@ def set(command, value, *devices):
     }
     if command in options_map:
         command = options_map[command]
-    # value may be a value or a device here but it doesn't make a difference
+        # value may be a value or a device here but it doesn't make a difference
     command = 'set{} {}'.format(command, value)
     return _cmd_run_all(command, devices)
 
