@@ -22,7 +22,7 @@ def __virtual__():
     Verify extfs is installed.
     """
     try:
-        utils.check_or_die('extfs')
+        utils.check_or_die('e2fsck')
         log.debug("extfs is available")
     except exceptions.CommandNotFoundError:
         log.error("extfs is not available")
