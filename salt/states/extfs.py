@@ -18,14 +18,10 @@ log.debug("module extfs loaded")
 
 
 def __virtual__():
-    """
-    Verify extfs is installed.
-    """
-    try:
-        utils.check_or_die('e2fsck')
-        log.debug("extfs is available")
-    except exceptions.CommandNotFoundError:
-        log.error("extfs is not available")
+    '''
+    Only work on POSIX-like systems
+    '''
+    if utils.is_windows():
         return False
     return 'extfs'
 
